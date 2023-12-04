@@ -13,13 +13,13 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new
-    @course.title = params.fetch("query_title")
-    @course.term_offered = params.fetch("query_term_")
-    @course.department_id = params.fetch("query_department_id")
+    course = Course.new
+    course.title = params.fetch("q_title")
+    course.term_offered = params.fetch("query_term")
+    course.department_id = params.fetch("query_department_id")
 
-    if @course.valid?
-      @course.save
+    if course.valid?
+      course.save
       redirect_to("/courses", { :notice => "Course created successfully." })
     else
       redirect_to("/courses", { :notice => "Course failed to create successfully." })
